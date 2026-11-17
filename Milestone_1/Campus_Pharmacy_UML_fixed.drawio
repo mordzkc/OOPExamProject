@@ -1,0 +1,145 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="campus-pharmacy-uml" name="Campus Pharmacy UML">
+    <mxGraphModel dx="1773" dy="660" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1250" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Medicine" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;&lt;i&gt;«abstract» Medicine&lt;/i&gt;&lt;/b&gt;&lt;hr/&gt;&lt;b&gt;Attributes&lt;/b&gt;&lt;br/&gt;- _code: str&lt;br/&gt;- _name: str&lt;br/&gt;- _unit_price: float&lt;br/&gt;- _reorder_level: int&lt;hr/&gt;&lt;b&gt;Methods&lt;/b&gt;&lt;br/&gt;+ code, name (properties)&lt;br/&gt;+ unit_price (validating setter)&lt;br/&gt;+ reorder_level (validating setter)&lt;br/&gt;+ validate_dispense() {abstract}&lt;br/&gt;+ max_quantity_per_line {abstract}&lt;br/&gt;- _check_positive()" vertex="1">
+          <mxGeometry height="220" width="260" x="40" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OrdinaryMedicine" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;OrdinaryMedicine&lt;/b&gt;&lt;hr/&gt;&lt;b&gt;Attributes&lt;/b&gt;&lt;br/&gt;+ CATEGORY = &quot;ORDINARY&quot;&lt;hr/&gt;&lt;b&gt;Methods&lt;/b&gt;&lt;br/&gt;+ validate_dispense()&lt;br/&gt;+ max_quantity_per_line = None" vertex="1">
+          <mxGeometry height="115" width="250" x="360" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ControlledMedicine" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;ControlledMedicine&lt;/b&gt;&lt;hr/&gt;&lt;b&gt;Attributes&lt;/b&gt;&lt;br/&gt;+ CATEGORY = &quot;CONTROLLED&quot;&lt;br/&gt;+ MAX_PER_LINE = 30&lt;hr/&gt;&lt;b&gt;Methods&lt;/b&gt;&lt;br/&gt;+ validate_dispense()&lt;br/&gt;+ max_quantity_per_line = 30" vertex="1">
+          <mxGeometry height="135" width="250" x="370" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="NarcoticMedicine" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;NarcoticMedicine&lt;/b&gt;&lt;hr/&gt;&lt;b&gt;Attributes&lt;/b&gt;&lt;br/&gt;+ MAX_PER_LINE = 10&lt;br/&gt;+ is_high_alert: bool&lt;hr/&gt;&lt;b&gt;Methods&lt;/b&gt;&lt;br/&gt;+ validate_dispense()&lt;br/&gt;+ high-alert check" vertex="1">
+          <mxGeometry height="140" width="250" x="680" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="PrescriberAllowList" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;PrescriberAllowList&lt;/b&gt;&lt;hr/&gt;&lt;b&gt;Attributes&lt;/b&gt;&lt;br/&gt;- codes: frozenset&lt;hr/&gt;&lt;b&gt;Methods&lt;/b&gt;&lt;br/&gt;+ is_authorised(code): bool" vertex="1">
+          <mxGeometry height="110" width="250" x="680" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="Branch" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;Branch&lt;/b&gt;&lt;hr/&gt;&lt;b&gt;Attributes&lt;/b&gt;&lt;br/&gt;- branch_id: int&lt;br/&gt;- name: str&lt;br/&gt;- location: str&lt;hr/&gt;&lt;b&gt;Methods&lt;/b&gt;&lt;br/&gt;+ read-only properties" vertex="1">
+          <mxGeometry height="120" width="250" x="40" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="StockItem" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;StockItem&lt;/b&gt;&lt;hr/&gt;&lt;b&gt;Attributes&lt;/b&gt;&lt;br/&gt;- branch_id: int&lt;br/&gt;- medicine_code: str&lt;br/&gt;- _quantity: int&lt;br/&gt;- max_capacity: int&lt;hr/&gt;&lt;b&gt;Methods&lt;/b&gt;&lt;br/&gt;+ add(quantity)&lt;br/&gt;+ remove(quantity)&lt;br/&gt;+ quantity (read-only)" vertex="1">
+          <mxGeometry height="170" width="250" x="360" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="Prescription" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;Prescription&lt;/b&gt;&lt;hr/&gt;&lt;b&gt;Attributes&lt;/b&gt;&lt;br/&gt;- id: int&lt;br/&gt;- patient_id: str&lt;br/&gt;- branch_id: int&lt;br/&gt;- prescriber_code: str&lt;br/&gt;- status: PrescriptionStatus&lt;br/&gt;- lines: list[PrescriptionLine]&lt;hr/&gt;&lt;b&gt;Methods&lt;/b&gt;&lt;br/&gt;+ add_line()&lt;br/&gt;+ ensure_dispensable()&lt;br/&gt;+ mark_dispensed()&lt;br/&gt;+ cancel()" vertex="1">
+          <mxGeometry height="220" width="270" x="40" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="PrescriptionLine" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;PrescriptionLine&lt;/b&gt;&lt;hr/&gt;&lt;b&gt;Attributes&lt;/b&gt;&lt;br/&gt;- medicine_code: str&lt;br/&gt;- quantity: int&lt;hr/&gt;&lt;b&gt;Methods&lt;/b&gt;&lt;br/&gt;+ validate quantity &gt; 0" vertex="1">
+          <mxGeometry height="110" width="250" x="360" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="PrescriptionStatus" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;«enumeration» PrescriptionStatus&lt;/b&gt;&lt;hr/&gt;PENDING&lt;br/&gt;DISPENSED&lt;br/&gt;CANCELLED" vertex="1">
+          <mxGeometry height="115" width="230" x="680" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="LowStockItem" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;LowStockItem&lt;/b&gt;&lt;hr/&gt;&lt;b&gt;Attributes&lt;/b&gt;&lt;br/&gt;- branch&lt;br/&gt;- medicine&lt;br/&gt;- quantity&lt;br/&gt;- reorder_level&lt;br/&gt;- severity&lt;br/&gt;- suggested_reorder&lt;hr/&gt;&lt;i&gt;Report data object&lt;/i&gt;" vertex="1">
+          <mxGeometry height="150" width="270" x="40" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="LowStockSeverity" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;«enumeration» Severity&lt;/b&gt;&lt;hr/&gt;LOW&lt;br/&gt;CRITICAL" vertex="1">
+          <mxGeometry height="100" width="250" x="360" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="AuditEntry" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;AuditEntry (Extension)&lt;/b&gt;&lt;hr/&gt;- timestamp&lt;br/&gt;- staff_id&lt;br/&gt;- action&lt;br/&gt;- detail" vertex="1">
+          <mxGeometry height="120" width="250" x="680" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="StockTransfer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;StockTransfer (Extension)&lt;/b&gt;&lt;hr/&gt;- from_branch&lt;br/&gt;- to_branch&lt;br/&gt;- medicine_code&lt;br/&gt;- quantity&lt;hr/&gt;+ validate()" vertex="1">
+          <mxGeometry height="120" width="250" x="1000" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="MedicineService" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;MedicineService&lt;/b&gt;&lt;hr/&gt;- MedicineRepository&lt;hr/&gt;+ register()" vertex="1">
+          <mxGeometry height="120" width="250" x="1000" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="StockService" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;StockService&lt;/b&gt;&lt;hr/&gt;- StockRepository&lt;hr/&gt;+ receive()" vertex="1">
+          <mxGeometry height="120" width="240" x="1300" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PrescriptionService" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;PrescriptionService&lt;/b&gt;&lt;hr/&gt;- PrescriptionRepository&lt;hr/&gt;+ create()&lt;br/&gt;+ cancel()" vertex="1">
+          <mxGeometry height="125" width="250" x="1000" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="DispensingService" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;DispensingService&lt;/b&gt;&lt;hr/&gt;- repositories/services&lt;hr/&gt;+ dispense()&lt;br/&gt;+ validates lines&lt;br/&gt;+ atomic stock update" vertex="1">
+          <mxGeometry height="145" width="260" x="1300" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="MedicineRepository" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;MedicineRepository&lt;/b&gt;&lt;hr/&gt;- Database&lt;hr/&gt;+ get()&lt;br/&gt;+ add()&lt;br/&gt;+ save()" vertex="1">
+          <mxGeometry height="115" width="250" x="1000" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="StockRepository" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;StockRepository&lt;/b&gt;&lt;hr/&gt;- Database&lt;hr/&gt;+ get()&lt;br/&gt;+ save()" vertex="1">
+          <mxGeometry height="115" width="240" x="1300" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="PrescriptionRepository" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;PrescriptionRepository&lt;/b&gt;&lt;hr/&gt;- Database&lt;hr/&gt;+ get()&lt;br/&gt;+ add()&lt;br/&gt;+ save()" vertex="1">
+          <mxGeometry height="115" width="250" x="1000" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="Database" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;spacingTop=6;fillColor=#ffffff;strokeColor=#333333;fontSize=12;" value="&lt;b&gt;Database&lt;/b&gt;&lt;hr/&gt;- connection&lt;hr/&gt;+ transaction()&lt;br/&gt;+ schema / seed" vertex="1">
+          <mxGeometry height="115" width="240" x="1300" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=18;" value="&lt;b&gt;Multi-Branch Campus Pharmacy Inventory, Dispensing and Reporting System — UML Class Diagram&lt;/b&gt;" vertex="1">
+          <mxGeometry height="35" width="1000" x="40" y="5" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fillColor=#f5f5f5;strokeColor=#999999;fontSize=12;" value="&lt;b&gt;Relationship key&lt;/b&gt;&lt;br/&gt;Solid line + hollow triangle = inheritance &amp;nbsp; | &amp;nbsp; Filled diamond = composition&lt;br/&gt;Solid line = association &amp;nbsp; | &amp;nbsp; Dashed arrow = dependency / uses&lt;br/&gt;&lt;i&gt;Extension classes are optional features, not core requirements.&lt;/i&gt;" vertex="1">
+          <mxGeometry height="75" width="550" x="1000" y="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="2" edge="1" parent="1" source="OrdinaryMedicine" style="endArrow=block;endFill=0;html=1;strokeWidth=1.5;" target="Medicine" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3" edge="1" parent="1" source="ControlledMedicine" style="endArrow=block;endFill=0;html=1;strokeWidth=1.5;" target="Medicine" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4" edge="1" parent="1" source="NarcoticMedicine" style="endArrow=block;endFill=0;html=1;strokeWidth=1.5;" target="ControlledMedicine" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5" edge="1" parent="1" source="Branch" style="startArrow=diamond;startFill=1;endArrow=none;html=1;" target="StockItem" value="1  ◆  0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6" edge="1" parent="1" source="Prescription" style="startArrow=diamond;startFill=1;endArrow=none;html=1;" target="PrescriptionLine" value="1  ◆  1..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7" edge="1" parent="1" source="StockItem" style="endArrow=open;html=1;" target="Medicine" value="refers to 1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8" edge="1" parent="1" source="Prescription" style="endArrow=open;html=1;" target="Branch" value="refers to 1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9" edge="1" parent="1" source="PrescriptionLine" style="endArrow=open;html=1;" target="Medicine" value="refers to 1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="10" edge="1" parent="1" source="ControlledMedicine" style="dashed=1;endArrow=open;html=1;" target="PrescriberAllowList" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="11" edge="1" parent="1" source="LowStockItem" style="dashed=1;endArrow=open;html=1;" target="StockItem" value="derived from">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="12" edge="1" parent="1" source="LowStockItem" style="dashed=1;endArrow=open;html=1;" target="LowStockSeverity" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="13" edge="1" parent="1" source="Prescription" style="endArrow=open;html=1;" target="PrescriptionStatus" value="status">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="14" edge="1" parent="1" source="MedicineService" style="dashed=1;endArrow=open;html=1;" target="MedicineRepository" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="15" edge="1" parent="1" source="StockService" style="dashed=1;endArrow=open;html=1;" target="StockRepository" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="16" edge="1" parent="1" source="PrescriptionService" style="dashed=1;endArrow=open;html=1;" target="PrescriptionRepository" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="17" edge="1" parent="1" source="DispensingService" style="dashed=1;endArrow=open;html=1;" target="MedicineRepository" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="18" edge="1" parent="1" source="DispensingService" style="dashed=1;endArrow=open;html=1;" target="StockRepository" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="19" edge="1" parent="1" source="DispensingService" style="dashed=1;endArrow=open;html=1;" target="PrescriptionRepository" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="20" edge="1" parent="1" source="MedicineRepository" style="dashed=1;endArrow=open;html=1;" target="Database" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="21" edge="1" parent="1" source="StockRepository" style="dashed=1;endArrow=open;html=1;" target="Database" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="22" edge="1" parent="1" source="PrescriptionRepository" style="dashed=1;endArrow=open;html=1;" target="Database" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
