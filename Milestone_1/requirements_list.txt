@@ -1,0 +1,108 @@
+REQUIREMENTS LIST
+Multi-Branch Campus Pharmacy Inventory, Dispensing and Reporting System
+CSC2105 Object-Oriented Programming using Python | Milestone One
+
+======================================================================
+1. SCOPE
+======================================================================
+
+1.1 In scope
+  - Medicines with unique codes, positive prices and non-negative reorder levels.
+  - Branches and per-branch stock that can never go negative.
+  - Multi-line prescriptions with three statuses: pending, dispensed, cancelled.
+  - Allow-list control for controlled medicines.
+  - Atomic dispensing with rollback, and a low-stock list.
+  - SQLite persistence, tkinter screens, automated tests and fictional seed data.
+  - Planned additions if time allows: audit log, stock transfers, price history.
+
+1.2 Out of scope
+  - Real patient or prescriber data.
+  - User login and passwords.
+  - Networking and billing.
+
+1.3 Assumptions
+  - The application runs on one computer with one SQLite file, used by one
+    operator at a time.
+  - Patient identifiers follow a fictional pattern such as PT-0001. Staff
+    identifiers follow ST-01.
+  - Prices are in Ugandan shillings and stored as numbers. Display formatting
+    is a UI concern.
+
+======================================================================
+2. FUNCTIONAL REQUIREMENTS
+======================================================================
+
+FR-01  Register a medicine with a unique code, name, positive unit price,
+       non-negative reorder level and a category (ordinary, controlled,
+       narcotic).
+
+FR-02  Register a branch with a unique branch id and a name.
+
+FR-03  Receive stock for a medicine at a branch. A stock record is created if
+       none exists. Non-positive quantities and quantities above capacity are
+       rejected.
+
+FR-04  Hold stock per branch. The same medicine can exist at several branches
+       with different quantities.
+
+FR-05  Create a prescription with a fictional patient id, a branch, an optional
+       prescriber code and one or more lines. The new prescription is pending.
+
+FR-06  Dispense a pending prescription. All stock reductions and the status
+       change to dispensed succeed together in one transaction.
+
+FR-07  Reject dispensing when any line exceeds branch stock (oversell). Roll
+       back and leave the prescription pending.
+
+FR-08  Reject dispensing of a controlled or narcotic medicine unless the
+       prescriber code is on the allow-list.
+
+FR-09  Reject an invalid price (zero, negative or not a number) when
+       registering or changing a medicine.
+
+FR-10  Reject dispensing a prescription that is already dispensed or is
+       cancelled.
+
+FR-11  Cancel a pending prescription.
+
+FR-12  List low-stock items (quantity at or below reorder level) for one branch
+       or all branches, with severity LOW or CRITICAL and a suggested reorder
+       quantity.
+
+FR-13  Enforce a per-line quantity cap: 30 for controlled, 10 for narcotic
+       medicines.
+
+FR-14  Keep all data in SQLite so it survives an application restart. Provide
+       a schema and fictional seed data.
+
+FR-15  Record an audit entry for each dispense, rejection and stock receipt,
+       with a fictional staff id.
+
+FR-16  Transfer stock between two branches as one atomic operation.
+
+FR-17  Record every price change in a price history.
+
+======================================================================
+3. NON-FUNCTIONAL REQUIREMENTS
+======================================================================
+
+NFR-01  Python 3 standard library only. No third-party package without written
+        approval.
+
+NFR-02  Object-oriented design with encapsulation, inheritance, overriding and
+        polymorphism.
+
+NFR-03  Three layers: presentation, domain and persistence. The domain layer
+        imports neither tkinter nor presentation code.
+
+NFR-04  Every rejection shows a clear, human-readable message in the interface.
+
+NFR-05  Only fictional patient, prescriber and staff data is stored.
+
+NFR-06  The README states how to create the database, load sample data and run
+        the app.
+
+NFR-07  Automated tests run with python -m unittest and need no setup beyond
+        the seed script.
+
+NFR-08  Code follows PEP 8 and every public class and method has a docstring.
