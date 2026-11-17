@@ -1,0 +1,144 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Dispensing workflow (UC4)" id="EDZ_RfkWqYNC3chxa1Ny">
+    <mxGraphModel dx="934" dy="1794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-1" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=16;fontStyle=1;fontColor=#1f3a5f;fillColor=#B6CACC;" value="Dispensing workflow: atomic dispense of a prescription" vertex="1">
+          <mxGeometry height="30" width="470" x="140" y="-30" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-2" parent="1" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#000000;fontSize=12;" value="pharmacist selects a pending prescription" vertex="1">
+          <mxGeometry height="44" width="260" x="170" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#1f3a5f;fontSize=12;" value="Open database transaction&amp;nbsp;" vertex="1">
+          <mxGeometry height="44" width="220" x="190" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-4" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#b58900;fontSize=11;" value="Is the prescription status pending?" vertex="1">
+          <mxGeometry height="90" width="240" x="180" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-5" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#b58900;fontSize=11;" value="is the medicine controlled or narcotic?" vertex="1">
+          <mxGeometry height="90" width="240" x="180" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-6" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#b58900;fontSize=11;" value="Is the prescriber on the allow-list AND is the quantity within the line cap?" vertex="1">
+          <mxGeometry height="120" width="260" x="170" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-7" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#b58900;fontSize=11;" value="Is branch stock &gt;= line quantity?" vertex="1">
+          <mxGeometry height="90" width="240" x="180" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#1f3a5f;fontSize=12;" value="Reduce branch stock for the line (fresh stock read per line)" vertex="1">
+          <mxGeometry height="50" width="240" x="180" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-9" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#b58900;fontSize=11;" value="Are there more lines?" vertex="1">
+          <mxGeometry height="90" width="240" x="180" y="815" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#1f3a5f;fontSize=12;" value="Set prescription status to dispensed and write audit entry" vertex="1">
+          <mxGeometry height="50" width="240" x="180" y="945" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#2e7d32;fontStyle=1;fontSize=12;" value="COMMIT" vertex="1">
+          <mxGeometry height="44" width="220" x="190" y="1035" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-12" parent="1" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#2e7d32;fontSize=12;" value="&amp;nbsp;success message shown, stock reduced, status dispensed" vertex="1">
+          <mxGeometry height="50" width="280" x="160" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#a33333;fontSize=11;" value="&amp;nbsp;prescription already dispensed or cancelled" vertex="1">
+          <mxGeometry height="50" width="200" x="520" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#a33333;fontSize=11;" value="&amp;nbsp;unauthorised prescriber or quantity over line cap" vertex="1">
+          <mxGeometry height="50" width="200" x="520" y="475" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#a33333;fontSize=11;" value="insufficient stock&amp;nbsp;" vertex="1">
+          <mxGeometry height="50" width="200" x="520" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#a33333;fontStyle=1;fontSize=12;" value="ROLLBACK&#xa;(whole transaction undone)" vertex="1">
+          <mxGeometry height="60" width="190" x="800" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#a33333;fontSize=11;" value="Log rejection in audit table (separate transaction)" vertex="1">
+          <mxGeometry height="50" width="190" x="800" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-18" parent="1" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#7EA6E0;strokeColor=#a33333;fontSize=11;" value="error message shown, stock unchanged, prescription stays pending" vertex="1">
+          <mxGeometry height="64" width="220" x="785" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-19" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f3a5f;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-20" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f3a5f;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-21" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f3a5f;labelBackgroundColor=#ffffff;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-5" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-22" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f3a5f;labelBackgroundColor=#ffffff;fillColor=#7DA7E0;" target="WojZ1DHVkKezu6aMnLqF-6" value="Yes (controlled or narcotic)">
+          <mxGeometry relative="1" y="80" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-23" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f3a5f;labelBackgroundColor=#ffffff;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-7" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-24" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f3a5f;labelBackgroundColor=#ffffff;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-8" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-25" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f3a5f;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-26" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f3a5f;labelBackgroundColor=#ffffff;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-10" value="No (all lines done)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-27" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f3a5f;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-28" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#2e7d32;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-29" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f3a5f;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-7" value="">
+          <mxGeometry relative="1" y="-40" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="100" y="355" />
+              <mxPoint x="100" y="645" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-30" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#1f3a5f;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-5" value="Yes (next line)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="40" y="860" />
+              <mxPoint x="40" y="285" />
+              <mxPoint x="300" y="285" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-31" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#a33333;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-13" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-32" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#a33333;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-14" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-33" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#a33333;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-15" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-34" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#a33333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-35" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#a33333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-36" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#a33333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.7;entryDx=0;entryDy=0;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-37" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#a33333;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-38" edge="1" parent="1" source="WojZ1DHVkKezu6aMnLqF-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#a33333;fillColor=#7EA6E0;" target="WojZ1DHVkKezu6aMnLqF-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-44" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#7EA6E0;strokeColor=#9aa7b5;fontSize=11;spacingLeft=6;spacingTop=4;" value="Notes&#xa;1. Every rejection path ends in ROLLBACK, so the database is never left half-updated.&#xa;2. Ordinary medicines skip the allow-list check (dashed path) and go straight to the stock check.&#xa;3. Stock is read fresh for each line, so the same medicine on two lines cannot oversell.&#xa;4. Narcotic medicines follow the controlled path with a lower line cap (10 instead of 30)." vertex="1">
+          <mxGeometry height="130" width="470" x="520" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="WojZ1DHVkKezu6aMnLqF-45" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="ordinary medication" vertex="1">
+          <mxGeometry height="10" width="60" x="90" y="560" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
