@@ -26,3 +26,14 @@ class LowStockItem:
     reorder_level: int
     severity: Severity
     suggested_reorder: int
+
+
+@dataclass(frozen=True)
+class StockLevel:
+    """One row of the stock screen: a stock item joined with its medicine details."""
+    branch_id: str
+    medicine_code: str
+    medicine_name: str
+    quantity: int
+    reorder_level: int
+    severity: "Severity | None"   # None means healthy

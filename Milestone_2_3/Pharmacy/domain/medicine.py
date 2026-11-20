@@ -1,3 +1,4 @@
+import math
 from abc import ABC, abstractmethod
 
 from ..config import CONTROLLED_MAX_PER_LINE, NARCOTIC_MAX_PER_LINE
@@ -37,7 +38,8 @@ class Medicine(ABC):
 
     @unit_price.setter
     def unit_price(self, value) -> None:
-        if isinstance(value, bool) or not isinstance(value, (int, float)) or value <= 0:
+        if (isinstance(value, bool) or not isinstance(value, (int, float))
+                or not math.isfinite(value) or value <= 0):
             raise InvalidPriceError(f"Unit price must be a positive number, got {value!r}.")
         self._unit_price = float(value)
 

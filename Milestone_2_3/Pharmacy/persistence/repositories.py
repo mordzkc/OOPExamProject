@@ -81,6 +81,13 @@ class StockRepository:
         return [StockItem(r["branch_id"], r["medicine_code"], r["quantity"], r["max_capacity"])
                 for r in rows]
 
+    def level_rows(self, branch_id: str):
+        """Stock rows joined with medicine name and reorder level (for the stock screen)."""
+        return self._db.conn.execute(
+            "SELECT s.branch_id, s.medicine_code, m.name AS medicine_name, s.quantity, m.reorder_level "
+            "FROM stock s JOIN medicines m ON m.code = s.medicine_code "
+            "WHERE s.branch_id = ? ORDER BY s.medicine_code", (branch_id,)).fetchall()
+
     def low_stock_rows(self, branch_id=None):
         return self._db.conn.execute(
             "SELECT s.branch_id, s.medicine_code, s.quantity, m.reorder_level "

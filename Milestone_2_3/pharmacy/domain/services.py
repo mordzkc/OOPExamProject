@@ -1,6 +1,6 @@
 from .branch import Branch
 from .exceptions import PharmacyError, ValidationError
-from .lowstock import LowStockItem, classify, suggested_reorder
+from .lowstock import LowStockItem, StockLevel, classify, suggested_reorder
 from .medicine import medicine_class_for
 from .prescription import Prescription
 
@@ -41,6 +41,13 @@ class StockService:
             self._stock.save(item)
         return item.quantity
 
+    def stock_levels(self, branch_id):
+        """Every stock row at a branch with its medicine name and LOW/CRITICAL status."""
+        branch = self._branches.get(branch_id)
+        return [StockLevel(r["branch_id"], r["medicine_code"], r["medicine_name"], r["quantity"],
+                           r["reorder_level"], classify(r["quantity"], r["reorder_level"]))
+                for r in self._stock.level_rows(branch.branch_id)]
+
     def low_stock(self, branch_id=None):
         result = []
         for r in self._stock.low_stock_rows(branch_id):
@@ -58,11 +65,11 @@ class PrescriptionService:
 
     def create(self, patient_id, branch_id, prescriber_code, lines) -> Prescription:
         """lines is a list of (medicine_code, quantity). Stock is NOT checked here."""
-        if not lines:
-            raise ValidationError("A prescription needs at least one line.")
         with self._db.transaction():
             branch = self._branches.get(branch_id)
-            rx = Prescription(patient_id, branch.branch_id, prescriber_code)
+            rx = Prescription(patient_id, branch.branch_id, prescriber_code)   # checks patient id first
+            if not lines:
+                raise ValidationError("A prescription needs at least one line.")
             for code, qty in lines:
                 rx.add_line(self._medicines.get(code).code, qty)
             self._prescriptions.add(rx)
