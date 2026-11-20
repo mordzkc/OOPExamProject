@@ -1,5 +1,6 @@
 import math
 from abc import ABC, abstractmethod
+from typing import Optional
 
 from ..config import CONTROLLED_MAX_PER_LINE, NARCOTIC_MAX_PER_LINE
 from .exceptions import (ValidationError, InvalidPriceError, InvalidQuantityError,
